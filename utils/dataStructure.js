@@ -6,15 +6,27 @@ const roomsMap = [];
 const adjacencyMap = [];
 const objectsMap = [];
 
-const readData = function(filePath) {
+/**
+ * Read the file provided as input via console
+ * @param {string} filePath 
+ */
+function readData(filePath) {
   return fs.readFileSync(filePath);
 };
 
-const parseJson = function(data) {
+/**
+ * Pars
+ * @param {string} data 
+ */
+function parseJson(data) {
   return JSON.parse(data);
 };
 
-const computeDataStructures = function(map) {
+/**
+ * 
+ * @param {object} map 
+ */
+function computeDataStructures(map) {
   map.rooms.forEach(currentRoom => {
     computeRoomsMap(currentRoom);
     computeAdjacencyMap(currentRoom);
@@ -24,17 +36,29 @@ const computeDataStructures = function(map) {
   return;
 };
 
-const computeRoomsMap = function(room) {
+/**
+ * 
+ * @param {object} room 
+ */
+function computeRoomsMap(room) {
   roomsMap[room.id] = room;
   return roomsMap;
 };
 
-const computeAdjacencyMap = function(room) {
+/**
+ * 
+ * @param {object} room 
+ */
+function computeAdjacencyMap(room) {
   adjacencyMap[room.id] = computeRoomNeighbors(room);
   return adjacencyMap;
 };
 
-const computeRoomNeighbors = function(room) {
+/**
+ * 
+ * @param {object} room 
+ */
+function computeRoomNeighbors(room) {
   let neighbors = [];
 
   if (room.north) {
@@ -53,7 +77,11 @@ const computeRoomNeighbors = function(room) {
   return neighbors;
 };
 
-const computeObjectsMap = function(room) {
+/**
+ * 
+ * @param {object} room 
+ */
+function computeObjectsMap(room) {
   if (room.objects.length) {
     room.objects.forEach(object => {
       objectsMap[object.name] = room.id;
@@ -63,13 +91,11 @@ const computeObjectsMap = function(room) {
   return objectsMap;
 };
 
-const getAdjacencyMap = () => adjacencyMap;
-
-const getObjectsMap = () => objectsMap;
-
-const getRoomsMap = () => roomsMap;
-
-const getObjectsRooms = function(objects) {
+/**
+ * 
+ * @param {array} objects 
+ */
+function getObjectsRooms(objects) {
   let nodes = [];
   objects.forEach(currentObject => {
     if (
@@ -83,9 +109,12 @@ const getObjectsRooms = function(objects) {
   return nodes;
 };
 
-/*
-* Export dei moduli
-*/
+const getAdjacencyMap = () => adjacencyMap;
+
+const getObjectsMap = () => objectsMap;
+
+const getRoomsMap = () => roomsMap;
+
 module.exports = {
   readData: readData,
   parseJson: parseJson,

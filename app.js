@@ -19,8 +19,8 @@ const filePath = args[FILE_PATH_INDEX];
 const objectsToCollect = args.slice(TO_COLLECT_INDEX);
 const startRoom = Number(args[START_ROOM_INDEX]);
 
-let data = ds.readData(filePath);
-let map = ds.parseJson(data);
+const data = ds.readData(filePath);
+const map = ds.parseJson(data);
 
 ds.computeDataStructures(map);
 const targetRooms = ds.getObjectsRooms(objectsToCollect);
@@ -36,12 +36,20 @@ isRouteEmpty(route);
 const roomsMap = ds.getRoomsMap();
 printer.printResult(route, roomsMap, objectsToCollect);
 
+/**
+ * 
+ * @param {*} objectsToCollect 
+ */
 function validateObjectsToCollet(objectsToCollect) {
   objectsToCollect.forEach(object => {
     validateObject(object);
   });
 }
 
+/**
+ * 
+ * @param {*} object 
+ */
 function validateObject(object) {
   if (!objectsMap[object]) {
     process.stderr.write("\nError | Impossibile trovare un percorso\n");
@@ -49,6 +57,10 @@ function validateObject(object) {
   }
 }
 
+/**
+ * 
+ * @param {*} route 
+ */
 function isRouteEmpty(route) {
   if (!route) {
     process.stderr.write("\nError | Impossibile trovare un percorso\n");

@@ -2,7 +2,13 @@
 
 const printed = [];
 
-const printResult = function(route, roomsMap, objectsToCollect) {
+/**
+ * 
+ * @param {*} route 
+ * @param {*} roomsMap 
+ * @param {*} objectsToCollect 
+ */
+function printResult(route, roomsMap, objectsToCollect) {
   process.stdout.write("\nID\tRoom\t\tObject Collected\n");
   process.stdout.write("----------------------------------------");
 
@@ -22,6 +28,11 @@ const printResult = function(route, roomsMap, objectsToCollect) {
   return;
 };
 
+/**
+ * 
+ * @param {*} objectsInRoom 
+ * @param {*} objectsToCollect 
+ */
 function printCollectedObjects(objectsInRoom, objectsToCollect) {
   let printNone = true;
   objectsInRoom.forEach(currentObject => {
@@ -49,4 +60,7 @@ function hasWhiteSpace(s) {
   return /\s/g.test(s);
 }
 
-module.exports.printResult = printResult;
+module.exports = {
+  printResult : printResult,
+  printCollectedObjects : printCollectedObjects
+}

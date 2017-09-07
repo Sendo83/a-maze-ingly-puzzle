@@ -1,5 +1,13 @@
 "use strict";
 
+/**
+ * Execute a breadth-first algorithm for traversing the graph data structures
+ * 
+ * @param {array} graph a matrix rapresenting tha adjaceny map
+ * @param {number} startNode 
+ * @param {number} targetNode 
+ * @returns {array} path a valid path from start node to target node (if it exists)
+ */
 const bfs = function(graph, startNode, targetNode) {
   let parents = [];
   let queue = [];
@@ -30,6 +38,12 @@ const bfs = function(graph, startNode, targetNode) {
   return null;
 };
 
+/**
+ * Compute the path to target node
+ * 
+ * @param {array} parents 
+ * @param {number} targetNode 
+ */
 const computePath = function(parents, targetNode) {
   let result = [targetNode];
 
