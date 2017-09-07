@@ -1,0 +1,14 @@
+{
+  "name": "a_maze_ingly_retro_route_puzzle",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Sendo",
+  "license": "ISC",
+  "devDependencies": {
+    "mocha": "3.5.0"
+  }
+}
