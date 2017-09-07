@@ -3,7 +3,7 @@
 const assert = require("assert");
 const algorithm = require("../algorithm/bfs");
 
-let graph = [
+const graph = [
   [1, 1, 0, 0, 1, 0],
   [1, 0, 1, 0, 1, 0],
   [0, 1, 0, 1, 0, 0],
