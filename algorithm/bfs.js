@@ -31,15 +31,12 @@ const bfs = function(graph, startNode, targetNode) {
 };
 
 const computePath = function(parents, targetNode) {
-  console.log(parents);
-  console.log(targetNode);
   let result = [targetNode];
 
   while (parents[targetNode] !== null) {
     targetNode = parents[targetNode];
     result.push(targetNode);
   }
-  console.log(result.reverse);
   return result.reverse();
 };
 
