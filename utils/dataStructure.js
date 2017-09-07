@@ -6,11 +6,11 @@ const roomsMap = []
 const adjacencyMap = []
 const objectsMap = []
 
-function readData(filePath){
+const readData = function(filePath){
   return fs.readFileSync(filePath)
 }
 
-function parseJson(data) {
+const parseJson = function(data) {
   return JSON.parse(data)
 }
 
@@ -26,17 +26,17 @@ const computeDataStructures = function(filePath){
   return
 }
 
-function computeRoomsMap(room){
+const computeRoomsMap = function(room){
   roomsMap[room.id] = room
   return roomsMap
 }
 
-function computeAdjacencyMap(room){
+const computeAdjacencyMap = function(room){
     adjacencyMap[room.id]	= computeRoomNeighbors(room)
     return adjacencyMap
 }
 
-function computeRoomNeighbors(room){
+const computeRoomNeighbors = function(room){
   let neighbors= []
 
 	if (room.north) {
@@ -55,7 +55,7 @@ function computeRoomNeighbors(room){
 	return neighbors
 }
 
-function computeObjectsMap(room){
+const computeObjectsMap = function(room){
   if (room.objects.length){
     room.objects.forEach(object  => {
       objectsMap[object.name] = room.id
@@ -86,6 +86,12 @@ const getObjectsRooms = function(objects) {
 * Export dei moduli
 */
 module.exports = {
+  readData : readData,
+  parseJson : parseJson,
+  computeRoomsMap : computeRoomsMap,
+  computeAdjacencyMap : computeAdjacencyMap,
+  computeRoomNeighbors : computeRoomNeighbors,
+  computeObjectsMap : computeObjectsMap,
   computeDataStructures : computeDataStructures,
   getObjectsRooms : getObjectsRooms,
   getAdjacencyMap : getAdjacencyMap,
