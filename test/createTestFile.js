@@ -1,5 +1,6 @@
 "use strict";
 
+/*
 const fs = require('fs')
 
 const createTestMapFile = function() {
@@ -21,3 +22,4 @@ module.exports = {
   createTestMapFile : createTestMapFile,
   deleteTestMapFile : deleteTestMapFile
 }
+*/
