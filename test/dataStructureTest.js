@@ -11,7 +11,6 @@ let map = ds.parseJson(testMap);
 describe("Data Structures", function() {
   describe("#computeDataStructures", function() {
     ds.computeDataStructures(map);
-
     describe("#getRoomsMap()", function() {
       it("Maze should have 4 rooms", function() {
         let roomsMap = ds.getRoomsMap();
