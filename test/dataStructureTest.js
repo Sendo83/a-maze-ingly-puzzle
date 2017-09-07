@@ -6,7 +6,7 @@ const testMap =
 
 const map = ds.parseJson(testMap);
 
-describe("Data Structure", function() {
+describe("Data Structures", function() {
   describe("#computeDataStructures", function() {
     ds.computeDataStructures(map);
 
@@ -45,6 +45,5 @@ describe("Data Structure", function() {
         assert.equal(4, objectRooms[1]);
       });
     });
-
   });
 });
