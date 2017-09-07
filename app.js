@@ -1,7 +1,7 @@
-'use strict'
+reader'use strict'
 
-const inputReader = require('./utils/inputReader')
-const dataStructure = require('./utils/dataStructure')
+const reader = require('./utils/inputReader')
+const ds = require('./utils/dataStructure')
 const routePlanner = require('./route/routePlanner')
 const printer = require('./utils/print')
 
@@ -14,23 +14,23 @@ const TO_COLLECT_INDEX = 2
 const START_ROOM_INDEX = 1
 const ERR_EXIT_CODE = 1
 
-const args = inputReader.read()
+const args = reader.read()
 const filePath = args[FILE_PATH_INDEX]
 const objectsToCollect = args.slice(TO_COLLECT_INDEX)
 const startRoom = Number(args[START_ROOM_INDEX])
 
-dataStructure.computeDataStructures(filePath)
-const targetRooms = dataStructure.getObjectsRooms(objectsToCollect)
-const objectsMap = dataStructure.getObjectsMap()
+ds.computeDataStructures(filePath)
+const targetRooms = ds.getObjectsRooms(objectsToCollect)
+const objectsMap = ds.getObjectsMap()
 
 validateObjectsToCollet(objectsToCollect)
 
-const adjacencyMap = dataStructure.getAdjacencyMap()
+const adjacencyMap = ds.getAdjacencyMap()
 const route = routePlanner.getRoute(adjacencyMap, startRoom, targetRooms)
 
 isRouteEmpty(route)
 
-const roomsMap = dataStructure.getRoomsMap()
+const roomsMap = ds.getRoomsMap()
 printer.printResult(route,roomsMap,objectsToCollect)
 
 
