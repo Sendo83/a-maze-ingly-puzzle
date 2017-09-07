@@ -14,7 +14,7 @@ const bfs = function(graph, startNode, targetNode) {
     current = queue.shift();
 
     if (current === targetNode) {
-      let path = buildPath(parents, targetNode);
+      let path = computePath(parents, targetNode);
       return path;
     }
 
@@ -30,15 +30,20 @@ const bfs = function(graph, startNode, targetNode) {
   return null;
 };
 
-function buildPath(parents, targetNode) {
+const computePath = function(parents, targetNode) {
+  console.log(parents);
+  console.log(targetNode);
   let result = [targetNode];
 
   while (parents[targetNode] !== null) {
     targetNode = parents[targetNode];
     result.push(targetNode);
   }
-
+  console.log(result.reverse);
   return result.reverse();
-}
+};
 
-module.exports.bfs = bfs;
+module.exports = {
+  bfs: bfs,
+  computePath: computePath
+};
