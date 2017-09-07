@@ -53,7 +53,7 @@ Output
 
 | ID | Room | Object collected|
 |----|------|-----------------|
-|0|Dining Room|None|
+|2|Dining Room|None|
 |1|Hallway|None|
 |2|Dining Room|None|
 |3|Kitchen|Knife|
@@ -73,4 +73,4 @@ TODO
 Implementation notes
 --------------------
 
-TODO - Describe assumptions
+* Room id should start from one, otherwise the script will return an error
