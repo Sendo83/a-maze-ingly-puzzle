@@ -2,11 +2,10 @@
 
 /**
  * Execute a breadth-first algorithm for traversing the graph data structures
- * 
+ *
  * @param {array} graph a matrix rapresenting tha adjaceny map
- * @param {number} startNode 
- * @param {number} targetNode 
- * @returns {array} path a valid path from start node to target node (if it exists)
+ * @param {number} startNode
+ * @param {number} targetNode
  */
 const bfs = function(graph, startNode, targetNode) {
   let parents = [];
@@ -39,10 +38,10 @@ const bfs = function(graph, startNode, targetNode) {
 };
 
 /**
- * Compute the path to target node
- * 
- * @param {array} parents 
- * @param {number} targetNode 
+ * Computes the path to target node
+ *
+ * @param {array} parents
+ * @param {number} targetNode
  */
 const computePath = function(parents, targetNode) {
   let result = [targetNode];
