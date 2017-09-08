@@ -37,18 +37,20 @@ const roomsMap = ds.getRoomsMap();
 printer.printResult(route, roomsMap, objectsToCollect);
 
 /**
- * 
- * @param {*} objectsToCollect 
+ * Checks if the provided objects to collcet are contained inside the maze
+ *
+ * @param {array} objectsToCollect list/array of objects to be collected
  */
-function validateObjectsToCollet(objectsToCollect) {
-  objectsToCollect.forEach(object => {
+function validateObjectsToCollet(toCollect) {
+  toCollect.forEach(object => {
     validateObject(object);
   });
 }
 
 /**
- * 
- * @param {*} object 
+ * Checks if the provided object is inside the maze
+ *
+ * @param {string} object is the object name
  */
 function validateObject(object) {
   if (!objectsMap[object]) {
@@ -58,8 +60,10 @@ function validateObject(object) {
 }
 
 /**
- * 
- * @param {*} route 
+ * Checks if the computed route is empty, if it's return an error starting
+ * that it's impossible to finde a proper route to collect all the objectsMap
+ *
+ * @param {array} route
  */
 function isRouteEmpty(route) {
   if (!route) {
