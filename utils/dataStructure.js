@@ -8,23 +8,26 @@ const objectsMap = [];
 
 /**
  * Read the file provided as input via console
- * @param {string} filePath 
+ *
+ * @param {string} filePath
  */
 function readData(filePath) {
   return fs.readFileSync(filePath);
-};
+}
 
 /**
- * Pars
- * @param {string} data 
+ * Parse the data into a JS object
+ *
+ * @param {string} data
  */
 function parseJson(data) {
   return JSON.parse(data);
-};
+}
 
 /**
- * 
- * @param {object} map 
+ * Computes data structures needed to solve the problem
+ *
+ * @param {object} map
  */
 function computeDataStructures(map) {
   map.rooms.forEach(currentRoom => {
@@ -34,29 +37,38 @@ function computeDataStructures(map) {
   });
 
   return;
-};
+}
 
 /**
- * 
- * @param {object} room 
+ * Computes an array of JSObject
+ * In each position matching a room.id stores a JSObject
+ * containing the information related to that room
+ * e.g. {room.id, room.name, room.neighbors, room.objects}
+ *
+ * @param {object} room
  */
 function computeRoomsMap(room) {
   roomsMap[room.id] = room;
   return roomsMap;
-};
+}
 
 /**
- * 
- * @param {object} room 
+ * Computes the adjaceny matrix
+ * the elements of the matrix indicate whether pairs of vertices
+ * are adjacent or not in the graph.
+ *
+ * @param {object} room
  */
 function computeAdjacencyMap(room) {
   adjacencyMap[room.id] = computeRoomNeighbors(room);
   return adjacencyMap;
-};
+}
 
 /**
- * 
- * @param {object} room 
+ * Computes a single row of the adjaceny matrix
+ * if the room i is connected room j insert a 1 in position j
+ *
+ * @param {object} room
  */
 function computeRoomNeighbors(room) {
   let neighbors = [];
@@ -75,11 +87,13 @@ function computeRoomNeighbors(room) {
   }
 
   return neighbors;
-};
+}
 
 /**
- * 
- * @param {object} room 
+ * Computes an array of JSObject
+ * Each element represent a pair <object.name: room.id>
+ *
+ * @param {object} room
  */
 function computeObjectsMap(room) {
   if (room.objects.length) {
@@ -89,11 +103,14 @@ function computeObjectsMap(room) {
   }
 
   return objectsMap;
-};
+}
 
 /**
- * 
- * @param {array} objects 
+ * Given an array of objects as input it returns an array
+ * that assosciate each object to the room.id in which it
+ * is contained
+ *
+ * @param {array} objects
  */
 function getObjectsRooms(objects) {
   let nodes = [];
@@ -107,7 +124,7 @@ function getObjectsRooms(objects) {
   });
 
   return nodes;
-};
+}
 
 const getAdjacencyMap = () => adjacencyMap;
 
