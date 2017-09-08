@@ -3,11 +3,11 @@
 const algorithm = require("../algorithm/bfs");
 
 /**
- * Compute the path from the start room to the target
+ * Computes the path from the start room to the target rooms
+ *
  * @param {array} adjacencyMap matrix representing the adjaceny map
  * @param {number} start start room, provided through the input
  * @param {array} target array containing the target rooms where the collecatble objects are contained
- * @returns {array} route a valid path, if exists, from the start room to the last target room
  */
 function getRoute(adjacencyMap, start, target) {
   let route = [start];
@@ -19,7 +19,8 @@ function getRoute(adjacencyMap, start, target) {
     if (!path) {
       return path;
     }
-    // Elimino il primo elemento del path visto che è già presente nella route
+    // Remove the first element inside the computed path since it is
+    // already stored in the route
     path.shift();
     route = route.concat(path);
     start = targetNode;
