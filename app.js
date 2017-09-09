@@ -2,6 +2,7 @@
 
 const reader = require("./utils/inputReader");
 const ds = require("./utils/dataStructure");
+const validate = require("./utils/validator");
 const routePlanner = require("./route/routePlanner");
 const printer = require("./utils/print");
 
@@ -16,48 +17,27 @@ const ERR_EXIT_CODE = 1;
 
 const args = reader.read();
 const filePath = args[FILE_PATH_INDEX];
-const objectsToCollect = args.slice(TO_COLLECT_INDEX);
+const toCollect = args.slice(TO_COLLECT_INDEX);
 const startRoom = Number(args[START_ROOM_INDEX]);
 
 const data = ds.readData(filePath);
 const map = ds.parseJson(data);
 
 ds.computeDataStructures(map);
-const targetRooms = ds.getObjectsRooms(objectsToCollect);
+const roomsMap = ds.getRoomsMap();
+validate.startRoom(startRoom, roomsMap);
+
+const targetRooms = ds.getObjectsRooms(toCollect);
 const objectsMap = ds.getObjectsMap();
 
-validateObjectsToCollet(objectsToCollect);
+// TODO validate start room
+validate.objectsToCollect(toCollect, objectsMap);
 
 const adjacencyMap = ds.getAdjacencyMap();
 const route = routePlanner.getRoute(adjacencyMap, startRoom, targetRooms);
 
 isRouteEmpty(route);
-
-const roomsMap = ds.getRoomsMap();
-printer.printResult(route, roomsMap, objectsToCollect);
-
-/**
- * Checks if the provided objects to collcet are contained inside the maze
- *
- * @param {array} objectsToCollect list/array of objects to be collected
- */
-function validateObjectsToCollet(toCollect) {
-  toCollect.forEach(object => {
-    validateObject(object);
-  });
-}
-
-/**
- * Checks if the provided object is inside the maze
- *
- * @param {string} object is the object name
- */
-function validateObject(object) {
-  if (!objectsMap[object]) {
-    process.stderr.write("\nError | Impossibile trovare un percorso\n");
-    process.exit(ERR_EXIT_CODE);
-  }
-}
+printer.printResult(route, roomsMap, toCollect);
 
 /**
  * Checks if the computed route is empty, if it's return an error starting
@@ -67,7 +47,8 @@ function validateObject(object) {
  */
 function isRouteEmpty(route) {
   if (!route) {
-    process.stderr.write("\nError | Impossibile trovare un percorso\n");
+    process.stderr.write("\nErrore | Impossibile trovare un percorso\n");
+    process.exitCode(ERR_EXIT_CODE);
     process.exit(ERR_EXIT_CODE);
   }
 }
