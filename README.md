@@ -68,9 +68,25 @@ Additional Goals
 Usage
 ------------------
 
-TODO
+You could run the script by cloning the repository or by pulling a docker image
+
+Example - cloning the repository:
+```
+git clone https://github.com/Sendo83/a-maze-ingly-puzzle.gitjava
+/path/to/local/repository/npm install
+/path/to/local/repository/npm test
+/path/to/local/repository/node app.js ./testMap/map.json 3 "Knife" "Cigarettes"
+```
+
+Example using Docker:
+```
+docker pull sendo/amazeingly
+docker run --rm -v /path/to/testMap/<file_name>:/usr/app/testMap/map.json sendo/amazeingly ./testMap/map.json 2 "Knife" "Cigarettes"
+```
 
 Implementation notes
 --------------------
-
+* The script is implemented by using node.js v6.11.3
 * Room id should start from one, otherwise the script will return an error
+* Start room should exists otherwise the script will exit with a proper error message
+* Start room should be a number otherwise the script will exit with a proper error
