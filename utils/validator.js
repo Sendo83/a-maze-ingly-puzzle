@@ -15,6 +15,8 @@ function startRoom(startRoom, roomsMap) {
     process.exitCode = ERR_EXIT_CODE;
     process.exit(ERR_EXIT_CODE);
   }
+
+  return true;
 }
 
 /**
@@ -27,13 +29,15 @@ function objectsToCollect(toCollect, objectsMap) {
   toCollect.forEach(object => {
     isObjectValid(object, objectsMap);
   });
+
+  return true;
 }
 
 /**
  * Checks if the provided object is inside the maze
  * if it's not exit by returning a proper error code
  *
- * @param {string} object is the object name
+ * @param {string} object name
  */
 function isObjectValid(object, objectsMap) {
   if (!objectsMap[object]) {
@@ -41,18 +45,32 @@ function isObjectValid(object, objectsMap) {
     process.exitCode = ERR_EXIT_CODE;
     process.exit(ERR_EXIT_CODE);
   }
+
+  return true;
 }
 
-function inputLength(inptuArgs) {
-  if (inptuArgs.length < MIN_ALLOWED_PAREMETERS) {
+/**
+ * Checks if the input args are valid
+ *
+ * @param {array} inputArgs used to call the script
+ */
+function inputLength(inputArgs) {
+  if (inputArgs.length < MIN_ALLOWED_PAREMETERS) {
     process.stderr.write(
       "\nErrore | Il numero minimo di input consetito è pari a due\n"
     );
     process.exitCode = ERR_EXIT_CODE;
     process.exit(ERR_EXIT_CODE);
   }
+
+  return true;
 }
 
+/**
+ * Checks if start room is a valid number (e.g. an integer)
+ *
+ * @param {string} startRoom provided as input argument
+ */
 function isStartRoomNumber(startRoom) {
   let start = Number(startRoom);
   if (!Number.isInteger(start) || start < 1) {
@@ -60,6 +78,8 @@ function isStartRoomNumber(startRoom) {
     process.exitCode = ERR_EXIT_CODE;
     process.exit(ERR_EXIT_CODE);
   }
+
+  return true;
 }
 
 module.exports = {
