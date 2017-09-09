@@ -17,8 +17,6 @@ function startRoom(startRoom, roomsMap) {
     process.exitCode = ERR_EXIT_CODE;
     process.exit(ERR_EXIT_CODE);
   }
-
-  return true;
 }
 
 /**
@@ -31,8 +29,6 @@ function objectsToCollect(toCollect, objectsMap) {
   toCollect.forEach(object => {
     isObjectValid(object, objectsMap);
   });
-
-  return true;
 }
 
 /**
@@ -47,8 +43,6 @@ function isObjectValid(object, objectsMap) {
     process.exitCode = ERR_EXIT_CODE;
     process.exit(ERR_EXIT_CODE);
   }
-
-  return true;
 }
 
 /**
@@ -64,8 +58,6 @@ function inputLength(inputArgs) {
     process.exitCode = ERR_EXIT_CODE;
     process.exit(ERR_EXIT_CODE);
   }
-
-  return true;
 }
 
 /**
@@ -80,8 +72,6 @@ function isStartRoomNumber(startRoom) {
     process.exitCode = ERR_EXIT_CODE;
     process.exit(ERR_EXIT_CODE);
   }
-
-  return true;
 }
 
 module.exports = {

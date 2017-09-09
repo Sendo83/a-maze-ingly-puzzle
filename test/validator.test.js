@@ -21,6 +21,10 @@ describe("Validator", function() {
       validate.startRoom(startRoom, roomsMap);
       assert.equal(0, process.exitCode);
     });
+    /*it("should exit with error code 1 if start room is not inside the map", function() {
+      validate.startRoom(11, roomsMap);
+      assert.equal(0, process.exitCode);
+    });*/
   });
 
   describe("#objectsToCollect()", function() {
@@ -28,6 +32,10 @@ describe("Validator", function() {
       validate.objectsToCollect(toCollect, objectsMap);
       assert.equal(0, process.exitCode);
     });
+    /*it("should exit with error code if test objects to collect are not inside the map", function() {
+      validate.objectsToCollect(["Bubbles", "Glass"], objectsMap);
+      assert.equal(1, process.exitCode);
+    });*/
   });
 
   describe("#isObjectValid()", function() {
@@ -35,19 +43,31 @@ describe("Validator", function() {
       validate.isObjectValid(object, objectsMap);
       assert.equal(0, process.exitCode);
     });
+    /*it("should exit with error code if test object to collect is not inside the map", function() {
+      validate.isObjectValid("Glass", objectsMap);
+      assert.equal(1, process.exitCode);
+    });*/
   });
 
   describe("#isStartRoomNumber()", function() {
-    it("should execute without error if start room is a number", function() {
+    it("should execute without error if start room is inside the map", function() {
       validate.isStartRoomNumber(startRoom);
       assert.equal(0, process.exitCode);
     });
+    /*it("should exit with error code 1 if start room is not a number", function() {
+      validate.isStartRoomNumber("5A");
+      assert.equal(1, process.exitCode);
+    });*/
   });
 
   describe("#inputLength()", function() {
     it("should execute without error if provide at least two input arguments for the script", function() {
-      validate.inputLength("map", startRoom);
+      validate.inputLength(["map", 2]);
       assert.equal(0, process.exitCode);
     });
+    /*it("should exit with error code 1 if the script it's executed with less than 2 arguments", function() {
+      validate.inputLength("map");
+      assert.equal(1, process.exitCode);
+    });*/
   });
 });
