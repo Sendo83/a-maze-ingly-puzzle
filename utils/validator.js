@@ -3,6 +3,8 @@
 const MIN_ALLOWED_PAREMETERS = 2;
 const ERR_EXIT_CODE = 1;
 
+process.exitCode = 0;
+
 /**
  * Checks if the provided start room is contained inside the maze
  *
