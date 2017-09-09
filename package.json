@@ -5,7 +5,8 @@
     "This is my own implementation to solve the a-maze-ingly retro route puzzle probelm",
   "main": "app.js",
   "scripts": {
-    "test": "./node_modules/mocha/bin/mocha test/*.test.js"
+    "test": "./node_modules/mocha/bin/mocha test/*.test.js",
+    "start": "node app.js"
   },
   "author": "Sendo",
   "license": "ISC",
