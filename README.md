@@ -63,7 +63,7 @@ Output
 Additional Goals
 ----------------
   - [x] TDD approach.
-  - [ ] Build a Docker container with runnable code inside so that we can mount a volume in it and test on different maps.
+  - [x] Build a Docker container with runnable code inside so that we can mount a volume in it and test on different maps.
 
 Usage
 ------------------

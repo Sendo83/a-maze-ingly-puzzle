@@ -44,7 +44,7 @@ printer.printResult(route, roomsMap, toCollect);
  * @param {array} route
  */
 function isRouteEmpty(route) {
-  if (!route && !test) {
+  if (!route) {
     process.stderr.write("\nErrore | Impossibile trovare un percorso\n");
     process.exitCode = ERR_EXIT_CODE;
     process.exit(ERR_EXIT_CODE);
