@@ -7,21 +7,21 @@ const MIN_ALLOWED_PAREMETERS = 1;
 const ERR_EXIT_CODE = 1;
 
 /**
- * 
+ *
  */
 function read() {
   let args = process.argv.slice(NORM_FACTOR);
 
   if (args.length < MIN_ALLOWED_PAREMETERS) {
     process.stderr.write(
-      "\nError | In order to execute the script you need to provide at least two arguments, the path where the maze map is stored and a starting point\n"
+      "\nErrore | Il numero minimo di input consetito è pari a due\n"
     );
     process.exit(ERR_EXIT_CODE);
   }
 
   let start = Number(args[START_ROOM_INDEX]);
   if (!Number.isInteger(start) || start < 1) {
-    process.stderr.write("\nError | Stanza di partenza non valida\n");
+    process.stderr.write("\nErrore | Stanza di partenza non valida\n");
     process.exit(ERR_EXIT_CODE);
   }
 
