@@ -3,12 +3,12 @@
 const printed = [];
 
 /**
- * 
- * @param {*} route 
- * @param {*} roomsMap 
- * @param {*} objectsToCollect 
+ *
+ * @param {array} route
+ * @param {arrat} roomsMap
+ * @param {array} toCollect
  */
-function printResult(route, roomsMap, objectsToCollect) {
+function printResult(route, roomsMap, toCollect) {
   process.stdout.write("\nID\tRoom\t\tObject Collected\n");
   process.stdout.write("----------------------------------------");
 
@@ -20,33 +20,35 @@ function printResult(route, roomsMap, objectsToCollect) {
     if (objectsInRoom.length < 1) {
       process.stdout.write("None");
     } else {
-      printCollectedObjects(objectsInRoom, objectsToCollect);
+      printCollectedObjects(objectsInRoom, toCollect);
     }
   });
   process.stdout.write("\n");
 
   return;
-};
+}
 
 /**
- * 
- * @param {*} objectsInRoom 
- * @param {*} objectsToCollect 
+ *
+ * @param {array} objectsInRoom
+ * @param {array} toCollect
  */
-function printCollectedObjects(objectsInRoom, objectsToCollect) {
+function printCollectedObjects(objectsInRoom, toCollect) {
   let printNone = true;
   objectsInRoom.forEach(currentObject => {
     if (
-      objectsToCollect.includes(currentObject.name) &&
+      toCollect.includes(currentObject.name) &&
       !printed.includes(currentObject.name)
     ) {
       process.stdout.write(currentObject.name + " ");
       printed.push(currentObject.name);
       printNone = false;
-    } else if (printNone) {
-      process.stdout.write("None");
     }
   });
+
+  if (printNone) {
+    process.stdout.write("None");
+  }
 
   return printed;
 }
@@ -61,6 +63,6 @@ function hasWhiteSpace(s) {
 }
 
 module.exports = {
-  printResult : printResult,
-  printCollectedObjects : printCollectedObjects
-}
+  printResult: printResult,
+  printCollectedObjects: printCollectedObjects
+};
