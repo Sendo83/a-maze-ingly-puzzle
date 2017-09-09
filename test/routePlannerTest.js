@@ -1,22 +1,25 @@
 "use strict";
 
 const assert = require("assert");
-const ds = require("../utils/dataStructure");
 const rp = require("../route/routePlanner");
 
-const testMap =
-  '{"rooms": [{ "id": 1, "name": "Hallway", "north": 2, "objects": [] }, { "id": 2, "name": "Dining Room", "south": 1, "west": 3, "east": 4, "objects": [] }, { "id": 3, "name": "Kitchen","east":2, "objects": [ { "name": "Knife" } ] }, { "id": 4, "name": "Sun Room","west":2, "objects": [ { "name": "Potted Plant" } ] }]}';
-
-const map = ds.parseJson(testMap);
+const targetRooms = [3, 4];
+const startRoom = 2;
+const adjacencyMap = [
+  [0, 0, 0, 0, 0],
+  [0, 0, 1, 0, 0],
+  [0, 1, 0, 1, 1],
+  [0, 0, 1, 0, 0],
+  [0, 0, 1, 0, 0]
+];
 
 describe("Route Planner", function() {
   describe("#getRoute()", function() {
-    it("Given the test map, start Room with id=2, and objects to collect Knife and Potted Plant the route to follow should be: Room id=2, Room id=4, Room id=2, Room id=3", function() {
-      ds.computeDataStructures(map);
-      let targetRooms = ds.getObjectsRooms(["Knife", "Potted Plant"]);
-      let objectsMap = ds.getObjectsMap();
-      let adjacencyMap = ds.getAdjacencyMap();
-      assert.deepEqual([2, 4, 2, 3], rp.getRoute(adjacencyMap, 2, [3, 4]));
+    it("should return [2,4,2,3] when I provide the test adjacenyMap, the test start room and the tast target rooms", function() {
+      assert.deepEqual(
+        [2, 4, 2, 3],
+        rp.getRoute(adjacencyMap, startRoom, targetRooms)
+      );
     });
   });
 });
