@@ -22,15 +22,31 @@ describe("Validator", function() {
       assert.equal(null, process.exitCode);
     });
   });
+
   describe("#objectsToCollect()", function() {
     it("should execute without error if test objects to collect are inside the map", function() {
       validate.objectsToCollect(toCollect, objectsMap);
       assert.equal(null, process.exitCode);
     });
   });
+
   describe("#isObjectValid()", function() {
     it("should execute without error it test objct is inside map", function() {
       validate.isObjectValid(object, objectsMap);
+      assert.equal(null, process.exitCode);
+    });
+  });
+
+  describe("#isStartRoomNumber()", function() {
+    it("should execute without error if start room is a number", function() {
+      validate.isStartRoomNumber(startRoom);
+      assert.equal(null, process.exitCode);
+    });
+  });
+
+  describe("#inputLength()", function() {
+    it("should execute without error if provide at least two input arguments for the script", function() {
+      validate.inputLength("map", startRoom);
       assert.equal(null, process.exitCode);
     });
   });
