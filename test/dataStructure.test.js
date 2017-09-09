@@ -15,7 +15,12 @@ describe("Data Structures - takes as input a mocked test map", function() {
       it("should return a data structure consistent with the provided test map, this means that each non empty position j inside the array should contains the same data of the room with id=j", function() {
         let roomsMap = ds.getRoomsMap();
         map.rooms.forEach(room => {
-          assert.deepEqual(roomsMap[room.id], room);
+          assert.equal(roomsMap[room.id].id, room.id);
+          assert.equal(roomsMap[room.id].name, room.name);
+          assert.equal(roomsMap[room.id].north, room.north);
+          assert.equal(roomsMap[room.id].south, room.south);
+          assert.equal(roomsMap[room.id].east, room.east);
+          assert.deepEqual(roomsMap[room.id].objects, room.objects);
         });
       });
     });
