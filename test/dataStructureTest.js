@@ -12,27 +12,36 @@ describe("Data Structures", function() {
   describe("#computeDataStructures", function() {
     ds.computeDataStructures(map);
     describe("#getRoomsMap()", function() {
-      it("Maze should have 4 rooms", function() {
+      it("Computed roomsMap should be consistent with testMap", function() {
         let roomsMap = ds.getRoomsMap();
-        assert.equal(4, roomsMap.length - 1);
+        map.rooms.forEach(room => {
+          assert.deepEqual(roomsMap[room.id], room);
+        });
       });
     });
 
     describe("#computeObjectsMap()", function() {
+      let objectsMap = ds.getObjectsMap();
+      it("Computed objectsMap should be consistent with test maze map", function() {
+        map.rooms.forEach(room => {
+          let objectInRoom = room.objects;
+          if (objectInRoom && objectInRoom.length > 0) {
+            assert.equal(room.id, objectsMap[room.objects[0].name]);
+          }
+        });
+      });
       it("Knife should be inside Room with id=3 and Potted Plant should be inside Room with id=4", function() {
-        let objectsMap = ds.getObjectsMap();
         assert.equal(3, objectsMap["Knife"]);
         assert.equal(4, objectsMap["Potted Plant"]);
       });
     });
 
     describe("#getAdjacencyMap()", function() {
+      let adjacencyMap = ds.getAdjacencyMap();
       it("Room with id=1 should be connected with Room with id=2", function() {
-        let adjacencyMap = ds.getAdjacencyMap();
         assert.equal(1, adjacencyMap[1][2]);
       });
       it("Room with id=2 should be connected with Room with id=1, Room with id=3 and Room with id=4", function() {
-        let adjacencyMap = ds.getAdjacencyMap();
         assert.equal(1, adjacencyMap[2][1]);
         assert.equal(1, adjacencyMap[2][3]);
         assert.equal(1, adjacencyMap[2][4]);
