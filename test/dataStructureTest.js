@@ -8,11 +8,11 @@ const testMap =
 
 const map = ds.parseJson(testMap);
 
-describe("Data Structures", function() {
+describe("Data Structures - takes as input a mocked test map", function() {
   describe("#computeDataStructures", function() {
     ds.computeDataStructures(map);
     describe("#getRoomsMap()", function() {
-      it("Computed roomsMap should be consistent with testMap", function() {
+      it("should return a data structure consistent with the provided test map, this means that each non empty position j inside the array should contains the same data of the room with id=j", function() {
         let roomsMap = ds.getRoomsMap();
         map.rooms.forEach(room => {
           assert.deepEqual(roomsMap[room.id], room);
@@ -22,7 +22,7 @@ describe("Data Structures", function() {
 
     describe("#computeObjectsMap()", function() {
       let objectsMap = ds.getObjectsMap();
-      it("Computed objectsMap should be consistent with test maze map", function() {
+      it("should return a data structure consistent with the provided test map, this means that in each non empty position j inside the array should contanins the same object contained inside the rooom with id=j ", function() {
         map.rooms.forEach(room => {
           let objectInRoom = room.objects;
           if (objectInRoom && objectInRoom.length > 0) {
@@ -30,7 +30,7 @@ describe("Data Structures", function() {
           }
         });
       });
-      it("Knife should be inside Room with id=3 and Potted Plant should be inside Room with id=4", function() {
+      it("shoudl return a data structure in which Knife is in room 3 and Potted Plant is in room 4", function() {
         assert.equal(3, objectsMap["Knife"]);
         assert.equal(4, objectsMap["Potted Plant"]);
       });
@@ -38,10 +38,10 @@ describe("Data Structures", function() {
 
     describe("#getAdjacencyMap()", function() {
       let adjacencyMap = ds.getAdjacencyMap();
-      it("Room with id=1 should be connected with Room with id=2", function() {
+      it("should return a matrix in which room 1 is connected with room 2", function() {
         assert.equal(1, adjacencyMap[1][2]);
       });
-      it("Room with id=2 should be connected with Room with id=1, Room with id=3 and Room with id=4", function() {
+      it("shoould return a matrix in which room 2 is connected with room 1, room 3 and room 4", function() {
         assert.equal(1, adjacencyMap[2][1]);
         assert.equal(1, adjacencyMap[2][3]);
         assert.equal(1, adjacencyMap[2][4]);
@@ -49,7 +49,7 @@ describe("Data Structures", function() {
     });
 
     describe("#getObjectsRooms()", function() {
-      it("Knife should be inside Room with id=3 and Potted Plant should be inside Room with id=4", function() {
+      it("should return an array in which Knife should associated with room 3 and Potted Plant shoudl be associated with room 4", function() {
         let objectRooms = ds.getObjectsRooms(["Knife", "Potted Plant"]);
         assert.equal(3, objectRooms[0]);
         assert.equal(4, objectRooms[1]);
