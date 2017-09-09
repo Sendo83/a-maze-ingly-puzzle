@@ -25,12 +25,10 @@ const map = ds.parseJson(data);
 
 ds.computeDataStructures(map);
 const roomsMap = ds.getRoomsMap();
-validate.startRoom(startRoom, roomsMap);
-
 const targetRooms = ds.getObjectsRooms(toCollect);
 const objectsMap = ds.getObjectsMap();
 
-// TODO validate start room
+validate.startRoom(startRoom, roomsMap);
 validate.objectsToCollect(toCollect, objectsMap);
 
 const adjacencyMap = ds.getAdjacencyMap();
@@ -46,7 +44,7 @@ printer.printResult(route, roomsMap, toCollect);
  * @param {array} route
  */
 function isRouteEmpty(route) {
-  if (!route) {
+  if (!route && !test) {
     process.stderr.write("\nErrore | Impossibile trovare un percorso\n");
     process.exitCode = ERR_EXIT_CODE;
     process.exit(ERR_EXIT_CODE);
