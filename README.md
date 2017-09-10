@@ -78,7 +78,7 @@ git clone https://github.com/Sendo83/a-maze-ingly-puzzle.gitjava
 /path/to/local/repository/node app.js ./testMap/map.json 3 "Knife" "Cigarettes"
 ```
 
-Example using Docker:
+Example - using Docker:
 ```
 docker pull sendo/amazeingly
 docker run --rm -v /path/to/testMap/<file_name>:/usr/app/testMap/map.json sendo/amazeingly ./testMap/map.json 2 "Knife" "Cigarettes"
@@ -86,7 +86,7 @@ docker run --rm -v /path/to/testMap/<file_name>:/usr/app/testMap/map.json sendo/
 
 Implementation notes
 --------------------
-* The script is implemented by using node.js v6.11.3
-* Room id should start from one, otherwise the script will return an error
-* Start room should exists otherwise the script will exit with a proper error message
-* Start room should be a number otherwise the script will exit with a proper error
+* The script is implemented by using node.js v6.11.3. It's not guarenteed that it will work with node previous version.
+* In order to execute the script the user should provide at list a valid JSON map and a valid start room (it should exists and the ID should be a number/integer)
+* If the object to collect list is empty the script will print a result with only the start room
+* An object to collect could be in more than one room, if it so the algorithm will try to collect the object contained in the room with a greater ID
