@@ -1,4 +1,4 @@
-_A-Maze-ingly Retro Route Puzzle_
+__A-Maze-ingly Retro Route Puzzle__
 
 This is a JSON variant of [the problem described by this blog post](http://www.jonarcher.com/2010_01_01_archive.html).
 
@@ -106,8 +106,8 @@ I made the follwing assumptions:
 1. Map should exists and should also be valid.
 2. Rooms ID should start at least from 1.
 3. Start room should exists otherwise the software will exit returning a proper error message.
-4. If the start room ID it's not a number/integer the software will exit retruning a proper error message.
+4. If the start room ID it's not a number/integer the software will exit returning a proper error message.
 5. The script should be executed with at least a valid map and a valid start room. If it's not the software will exit returning a proper error message.
 6. If one object to collect doesn't exists (e.g. it's not defined inside the map) the software will exit returning a proper error message.
-7. A room could contains more than one object
+7. A room could contains more than one object.
 8. An object to collect could be in only one room.
