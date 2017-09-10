@@ -6,7 +6,7 @@ const validate = require("../utils/validator");
 const startRoom = 2;
 const toCollect = ["Knife", "Potted Plant"];
 const object = "Knife";
-const objectsMap = { Knife: 3, "Potted Plant": 4 };s
+const objectsMap = { Knife: 3, "Potted Plant": 4 };
 const roomsMap = [
   {},
   { id: 1, name: "Hallway", north: 2, objects: [] },
