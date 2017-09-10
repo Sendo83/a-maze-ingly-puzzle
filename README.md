@@ -89,7 +89,7 @@ To run the software use the following command:
 ```
 node /path/to/a-maze-ingly-puzzle/app.js /path/to/testMap "object_to_collect"
 ```
-Here is an example using a predefined map:
+Here it is an example using a predefined map:
 ```
 node app.js ./testMap/map.json 2 "Knife" "Potted Plant" "Cigarettes"
 ```
@@ -110,4 +110,4 @@ I made the follwing assumptions:
 5. The script should be executed with at least a valid map and a valid start room. If it's not the software will exit returning a proper error message.
 6. If one object to collect doesn't exists (e.g. it's not defined inside the map) the software will exit returning a proper error message.
 7. A room could contains more than one object.
-8. An object to collect could be in only one room.
+8. An object to collect could be only in one room.
