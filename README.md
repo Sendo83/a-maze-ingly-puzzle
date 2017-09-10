@@ -68,17 +68,16 @@ Additional Goals
 Usage
 ------------------
 
-This software can be run through a *Docker* container: [`sendo/amazeingly`](https://hub.docker.com/r/sendo/amazeingly/).
+This software can be run through a **Docker** container [`sendo/amazeingly`](https://hub.docker.com/r/sendo/amazeingly/).
 
 Once you pull the container you can attach a volume containing the map file to use and then run the software with a specific input, like this:
 ```
 docker run --rm -v /host/path/to/map:/testMap sendo/amazeingly /testMap/map.json 2 "<object_to_collect>"
 ```
 
-If you prefer to run it without a Docker container you could clone my *github repository*:
-[`sendo83/a-maze-ingly-puzzle`](https://github.com/Sendo83/a-maze-ingly-puzzle).
+If you prefer to run it without a Docker container you could clone my **github repository** [`sendo83/a-maze-ingly-puzzle`](https://github.com/Sendo83/a-maze-ingly-puzzle).
 
-The software is based upon *JavaScript* and *Node.js v6.3.11* (there is no guaranteed that it will work with node previous version).
+The software is based upon **JavaScript** and **Node.js v6.3.11** (there is _**no guarantee**_ that it will work with node previous version).
 
 Once you clone the repository you should run:
 ```
