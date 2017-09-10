@@ -3,7 +3,7 @@
 const printed = [];
 
 /**
- *
+ * s
  * @param {array} route
  * @param {arrat} roomsMap
  * @param {array} toCollect
@@ -15,8 +15,8 @@ function printResult(route, roomsMap, toCollect) {
   route.forEach(roomId => {
     process.stdout.write("\n" + roomId + "\t" + roomsMap[roomId].name + "\t");
     if (!hasWhiteSpace(roomsMap[roomId].name)) process.stdout.write("\t");
-    let objectsInRoom = roomsMap[roomId].objects;
 
+    let objectsInRoom = roomsMap[roomId].objects;
     if (objectsInRoom.length < 1) {
       process.stdout.write("None");
     } else {
@@ -25,7 +25,7 @@ function printResult(route, roomsMap, toCollect) {
   });
   process.stdout.write("\n");
 
-  return;
+  return 0;
 }
 
 /**
@@ -35,6 +35,7 @@ function printResult(route, roomsMap, toCollect) {
  */
 function printCollectedObjects(objectsInRoom, toCollect) {
   let printNone = true;
+
   objectsInRoom.forEach(currentObject => {
     if (
       toCollect.includes(currentObject.name) &&
