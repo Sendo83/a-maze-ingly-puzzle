@@ -68,25 +68,47 @@ Additional Goals
 Usage
 ------------------
 
-You could run the script by cloning the repository or by pulling a docker image
+This software can be run through a Docker container: [`sendo/amazeingly`](https://hub.docker.com/r/sendo/amazeingly/).
 
-Example - cloning the repository:
+Once you pull the container you can attach a volume containing the map file to use and then run the software with a specific input, like this:
 ```
-git clone https://github.com/Sendo83/a-maze-ingly-puzzle.gitjava
-/path/to/local/repository/npm install
-/path/to/local/repository/npm test
-/path/to/local/repository/node app.js ./testMap/map.json 3 "Knife" "Cigarettes"
+docker run --rm -v /host/path/to/map:/testMap sendo/mazepuzzle /testMap/map.json 2 "<object_to_collect>"
 ```
 
-Example - using Docker:
+If you prefer to run it without a Docker container you could clone my github repository:
+[`sendo83/a-maze-ingly-puzzle`](https://github.com/Sendo83/a-maze-ingly-puzzle).
+
+The software is based upon *JavaScript* and *Node.js v6.3.11* (there is no guaranteed that it will work with node previous version).
+
+Once you clone the repository you should run
 ```
-docker pull sendo/amazeingly
-docker run --rm -v /path/to/testMap/<file_name>:/usr/app/testMap/map.json sendo/amazeingly ./testMap/map.json 2 "Knife" "Cigarettes"
+npm install
+```
+This command will donwload all the needed dependencies defined inside package.json.
+
+To run the software use the following command:
+```
+node /path/to/a-maze-ingly-puzzle/app.js /path/to/testMap "object_to_collect"
+```
+Here is an example using a predefined map:
+```
+node app.js ./testMap/map.json 2 "Knife" "Potted Plant" "Cigarettes"
+```
+In order to run the test use the follwing command:
+```
+/path/to/a-maze-ingly-puzzle/ npm test
 ```
 
 Implementation notes
 --------------------
-* The script is implemented by using node.js v6.11.3. It's not guarenteed that it will work with node previous version.
-* In order to execute the script the user should provide at list a valid JSON map and a valid start room (it should exists and the ID should be a number/integer)
-* If the object to collect list is empty the script will print a result with only the start room
-* An object to collect could be in more than one room, if it so the algorithm will try to collect the object contained in the room with a greater ID
+
+I made the follwing assumptions:
+
+1. Map should exists and should also be valid.
+2. Rooms ID should start at least from 1.
+3. Start room should exists otherwise the software will exit returning a proper error message.
+4. If the start room ID it's not a number/integer the software will exit retruning a proper error message.
+5. The script should be executed with at least a valid map and a valid start room. If it's not the software will exit returning a proper error message.
+6. If one object to collect doesn't exists (e.g. it's not defined inside the map) the software will exit returning a proper error message.
+7. A room could contains more than one object
+8. An object to collect could be in only one room.
