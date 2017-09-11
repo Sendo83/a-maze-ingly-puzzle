@@ -101,13 +101,13 @@ In order to run the test use the follwing command:
 Implementation notes
 --------------------
 
-I made the follwing assumptions:
+I made the following assumptions:
 
 1. Map should exists and should also be valid.
-2. Rooms ID should start at least from 1.
+2. Rooms ID should start with a number equals or grater than 1.
 3. Start room should exists otherwise the software will exit returning a proper error message.
 4. If the start room ID it's not a number/integer the software will exit returning a proper error message.
-5. The script should be executed with at least a valid map and a valid start room. If it's not the software will exit returning a proper error message.
+5. The script should be executed with at least two inputs: a valid map and a valid start room. If it's not the software will exit returning a proper error message.
 6. If one object to collect doesn't exists (e.g. it's not defined inside the map) the software will exit returning a proper error message.
 7. A room could contains more than one object.
 8. An object to collect could be only in one room.
