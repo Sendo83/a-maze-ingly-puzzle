@@ -9,9 +9,9 @@ Write a program that will output a valid route one could follow to collect all s
 The map is a json description of set of rooms with allowed path and contained object.
 
 Exercise starts with an input of:
-  - json reppresentation of map
+  - json representation of map
   - starting room
-  - list of object to collect
+  - list of objects to collect
 
 ```
 Room type allowed fields
